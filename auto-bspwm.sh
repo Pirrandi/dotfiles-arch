@@ -1,5 +1,5 @@
 #!/bin/bash
-DOFTILES_DIR="$(pwd)"
+DOTFILES_DIR="$(pwd)"
 set -e
 clear
 if ! command -v git &> /dev/null; then
