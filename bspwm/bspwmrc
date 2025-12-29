@@ -31,5 +31,5 @@ bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Firefox desktop='^2'
 bspc rule -a Discord desktop='^3'
 
-feh --bg-fill /home/pirra/Pictures/a_cat_looking_at_the_camera.png
-~/.config/polybar/launch.sh &
+feh --bg-fill $HOME/Pictures/wallpaper.png
+$HOME/.config/polybar/launch.sh &
