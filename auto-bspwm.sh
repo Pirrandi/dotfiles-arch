@@ -31,7 +31,7 @@ cp -r "$DOTFILES_DIR/alacritty" "$DOTFILES_DIR/bspwm" "$DOTFILES_DIR/polybar" "$
 cp .tmux.conf $HOME/
 chmod +x $HOME/.config/bspwm/bspwmrc
 chmod +x $HOME/.config/polybar/launch.sh
-sleep 1
+sleep 3
 
 echo "Configuring blackarch repo..."
 mkdir $HOME/blackarch && cd $_ &&  curl -O https://blackarch.org/strap.sh
