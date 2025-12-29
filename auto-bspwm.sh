@@ -2,19 +2,19 @@
 DOFTILES_DIR="$(pwd)"
 set -e
 clear
-
-echo "Starting installation..."
-#sudo pacman -S bspwm tmux polybar sxhkd open-vm-tools dunst rofi alacritty tmux ttf-jetbrains-mono-nerd alacritty git feh zsh
 if ! command -v git &> /dev/null; then
     echo "Git no está instalado"
     exit 1
 fi
+
+echo "Starting installation..."
+sudo pacman -S bspwm tmux polybar sxhkd open-vm-tools dunst rofi alacritty tmux ttf-jetbrains-mono-nerd alacritty git feh zsh
 sleep 1
 clear
 
 echo "Configuring zsh..."
 sleep 1
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 clear
 
 echo "Configuring p10k..."
@@ -35,7 +35,7 @@ sleep 1
 echo "Configuring bspwm/polybar/alacritty/tmux..."
 mkdir -p $HOME/.config
 mkdir -p $HOME/Pictures
-cp wallpaper.png $HOME/Pictures
+cp "$DOTFILES_DIR/wallpaper.png" $HOME/Pictures
 cp -r "$DOTFILES_DIR/alacritty" "$DOTFILES_DIR/bspwm" "$DOTFILES_DIR/polybar" "$DOTFILES_DIR/sxhkd" $HOME/.config
 cp .tmux.conf $HOME/
 chmod +x $HOME/.config/bspwm/bspwmrc
