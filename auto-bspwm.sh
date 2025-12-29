@@ -35,8 +35,7 @@ sleep 1
 echo "Configuring bspwm/polybar/alacritty/tmux..."
 mkdir -p $HOME/.config
 mkdir -p $HOME/Pictures
-wget https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/weirdcore/a_cat_looking_at_the_camera.png
-mv "$DOTFILES_DIR/a_cat_looking_at_the_camera.png" $HOME/Pictures
+wget -O $HOME/Pictures/wallpaper.png https://raw.githubusercontent.com/dharmix/walls/refs/heads/main/weirdcore/a_cat_looking_at_the_camera.png
 cp -r "$DOTFILES_DIR/alacritty" "$DOTFILES_DIR/bspwm" "$DOTFILES_DIR/polybar" "$DOTFILES_DIR/sxhkd" $HOME/.config
 cp .tmux.conf $HOME/
 chmod +x $HOME/.config/bspwm/bspwmrc
