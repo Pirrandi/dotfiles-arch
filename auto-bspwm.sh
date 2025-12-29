@@ -23,15 +23,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 clear
 
-echo "Configuring blackarch repo..."
-mkdir $HOME/blackarch && cd $_ &&  curl -O https://blackarch.org/strap.sh
-chmod +x strap.sh
-sudo ./strap.sh
-sleep 1
-sudo pacman -Syu
-sleep 1
-
-
 echo "Configuring bspwm/polybar/alacritty/tmux..."
 mkdir -p $HOME/.config
 mkdir -p $HOME/Pictures
@@ -40,6 +31,14 @@ cp -r "$DOTFILES_DIR/alacritty" "$DOTFILES_DIR/bspwm" "$DOTFILES_DIR/polybar" "$
 cp .tmux.conf $HOME/
 chmod +x $HOME/.config/bspwm/bspwmrc
 chmod +x $HOME/.config/polybar/launch.sh
+sleep 1
+
+echo "Configuring blackarch repo..."
+mkdir $HOME/blackarch && cd $_ &&  curl -O https://blackarch.org/strap.sh
+chmod +x strap.sh
+sudo ./strap.sh
+sleep 1
+sudo pacman -Syu
 sleep 1
 
 echo "Configuring services..."
