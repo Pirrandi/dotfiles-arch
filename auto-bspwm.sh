@@ -1,4 +1,5 @@
 #!/bin/bash
+DOFTILES_DIR="$(pwd)"
 set -e
 clear
 
@@ -33,7 +34,9 @@ sleep 1
 
 echo "Configuring bspwm/polybar/alacritty/tmux..."
 mkdir -p $HOME/.config
-cp -r ./alacritty ./bspwm ./polybar ./sxhkd $HOME/.config
+mkdir -p $HOME/Pictures
+cp wallpaper.png $HOME/Pictures
+cp -r "$DOTFILES_DIR/alacritty" "$DOTFILES_DIR/bspwm" "$DOTFILES_DIR/polybar" "$DOTFILES_DIR/sxhkd" $HOME/.config
 cp .tmux.conf $HOME/
 chmod +x $HOME/.config/bspwm/bspwmrc
 chmod +x $HOME/.config/polybar/launch.sh
