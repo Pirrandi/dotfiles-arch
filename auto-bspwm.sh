@@ -2,6 +2,7 @@
 DOTFILES_DIR="$(pwd)"
 set -e
 clear
+
 if ! command -v git &> /dev/null; then
     echo "Git no está instalado"
     exit 1
@@ -27,14 +28,32 @@ echo "Configuring bspwm/polybar/alacritty/tmux..."
 mkdir -p $HOME/.config
 mkdir -p $HOME/Pictures
 wget -O $HOME/Pictures/wallpaper.png https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/weirdcore/a_cat_looking_at_the_camera.png
-cp -r "$DOTFILES_DIR/alacritty" "$DOTFILES_DIR/bspwm" "$DOTFILES_DIR/polybar" "$DOTFILES_DIR/sxhkd" $HOME/.config
-cp .tmux.conf $HOME/
-chmod +x $HOME/.config/bspwm/bspwmrc
-chmod +x $HOME/.config/polybar/launch.sh
+
+# Debug: mostrar qué hay en el directorio
+echo "DOTFILES_DIR is: $DOTFILES_DIR"
+echo "Contents:"
+ls -la "$DOTFILES_DIR"
 sleep 3
 
+# Verificar que las carpetas existen antes de copiar
+for dir in alacritty bspwm polybar sxhkd; do
+    if [ -d "$DOTFILES_DIR/$dir" ]; then
+        echo "Copying $dir..."
+        cp -rv "$DOTFILES_DIR/$dir" "$HOME/.config/"
+    else
+        echo "WARNING: $dir directory not found!"
+    fi
+done
+
+cp "$DOTFILES_DIR/.tmux.conf" "$HOME/"
+chmod +x "$HOME/.config/bspwm/bspwmrc"
+chmod +x "$HOME/.config/polybar/launch.sh"
+sleep 1
+
 echo "Configuring blackarch repo..."
-mkdir $HOME/blackarch && cd $_ &&  curl -O https://blackarch.org/strap.sh
+mkdir -p $HOME/blackarch
+cd $HOME/blackarch
+curl -O https://blackarch.org/strap.sh
 chmod +x strap.sh
 sudo ./strap.sh
 sleep 1
