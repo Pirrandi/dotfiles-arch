@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# VMware auto-resize
+/usr/bin/vmware-user-suid-wrapper &
+
+# Autostart
+pgrep -x sxhkd > /dev/null || sxhkd &
+nitrogen --restore &
+polybar main &
+xrandr --output Virtual-1 --auto
+
+# Monitor y workspaces
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+
+# Configuración de ventanas
+bspc config border_width         1
+bspc config window_gap          12
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focus_follows_pointer true
+
+# Colores
+bspc config normal_border_color "#44475a"
+bspc config active_border_color "#22FF00"
+bspc config focused_border_color "#22FF00"
+bspc config presel_feedback_color "#6272a4"
+
+# Reglas de ventanas
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Firefox desktop='^2'
+bspc rule -a Discord desktop='^3'
+
+feh --bg-fill /home/pirra/Pictures/a_cat_looking_at_the_camera.png
+~/.config/polybar/launch.sh &
