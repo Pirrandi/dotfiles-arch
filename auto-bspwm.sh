@@ -46,6 +46,7 @@ for dir in alacritty bspwm polybar sxhkd; do
 done
 
 cp "$DOTFILES_DIR/.tmux.conf" "$HOME/"
+cp "$DOTFILES_DIR/.p10k.zsh" "$HOME/" 
 chmod +x "$HOME/.config/bspwm/bspwmrc"
 chmod +x "$HOME/.config/polybar/launch.sh"
 sleep 1
